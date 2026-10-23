@@ -1,0 +1,27 @@
+{
+  "homepage": "https://github.com/Chokribettaibi/MyProfile-2026.git",
+  "name": "chokri-bettaibi-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "gh-pages -d dist",
+    "postbuild": "npm run build"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.14",
+    "ogl": "^1.0.11",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "tailwindcss": "^4.1.14",
+    "three": "^0.186.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.4",
+    "gh-pages": "^6.3.0",
+    "vite": "^7.3.7"
+  }
+}
