@@ -86,9 +86,9 @@ export default function Hero() {
       </div>
       <div style={{ width: "100%", height: "600px" }}>
         <Lanyard
-          frontImage="/portrait-1.webp"
-          backImage="/1760789324338.jpg"
-          strapImage="/band.png"
+          frontImage={`${import.meta.env.BASE_URL}portrait-1.webp`}
+          backImage={`${import.meta.env.BASE_URL}1760789324338.jpg`}
+          strapImage={`${import.meta.env.BASE_URL}band.png`}
           imageFit="cover"
           cardColor="#ffffff"
           orientation="portrait"

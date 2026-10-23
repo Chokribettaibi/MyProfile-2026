@@ -874,18 +874,24 @@ const CrystalizedBall = ({
     const container = containerRef.current;
     if (!container) return undefined;
 
-    const renderer = new Renderer({ alpha: true, premultipliedAlpha: true, antialias: false, depth: false });
+    const canvas = document.createElement('canvas');
+    const attributes = { alpha: true, premultipliedAlpha: true, antialias: false, depth: false };
+    // OGL assumes a WebGL context exists and writes `gl.renderer` immediately.
+    // Probe first so devices without WebGL can skip this decorative animation safely.
+    if (!canvas.getContext('webgl2', attributes)) return undefined;
+
+    const renderer = new Renderer({ canvas, ...attributes });
     const gl = renderer.gl;
     if (!renderer.isWebgl2) {
       gl.getExtension('WEBGL_lose_context')?.loseContext();
       return undefined;
     }
-    const canvas = gl.canvas;
-    canvas.style.display = 'block';
-    canvas.style.width = '100%';
-    canvas.style.height = '100%';
-    canvas.setAttribute('aria-hidden', 'true');
-    container.appendChild(canvas);
+    const renderCanvas = gl.canvas;
+    renderCanvas.style.display = 'block';
+    renderCanvas.style.width = '100%';
+    renderCanvas.style.height = '100%';
+    renderCanvas.setAttribute('aria-hidden', 'true');
+    container.appendChild(renderCanvas);
 
     const fullFloat = !!gl.getExtension('EXT_color_buffer_float');
     const halfFloat = fullFloat || !!gl.getExtension('EXT_color_buffer_half_float');
