@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Portfolio de Chokri Bettaibi, enseignant en mathématiques, mentor et développeur. Cours, applications et ressources pédagogiques." />
+    <meta property="og:title" content="Chokri Bettaibi — Mathématiques & programmation" />
+    <meta property="og:description" content="Enseignant, mentor et développeur. Mathématiques claires, code moderne, progression concrète." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.bettaibichokri.com/" />
+    <meta property="og:image" content="https://www.bettaibichokri.com/img/img3.png" />
+    <link rel="canonical" href="https://www.bettaibichokri.com/" />
+    <link rel="icon" type="image/png" href="https://github.com/Chokribettaibi/MyProfile-2026.git/favicon.png" />
+    <title>Chokri Bettaibi — Mathématiques & programmation</title>
+    <script type="module" crossorigin src="https://github.com/Chokribettaibi/MyProfile-2026.git/assets/index-DD-Onwcj.js"></script>
+    <link rel="stylesheet" crossorigin href="https://github.com/Chokribettaibi/MyProfile-2026.git/assets/index-DOAC6yRH.css">
+  </head>
+  <body>
+    <div id="root">
+        <main id="startup-state" role="status" style="min-height:100vh;display:grid;place-content:center;padding:24px;background:#000;color:#f0f0f0;font:16px/1.6 system-ui,sans-serif;text-align:center">
+        <strong style="font-size:22px">Chargement du portfolio…</strong>
+        <span>Chokri Bettaibi · Mathématiques & programmation</span>
+      </main>
+    </div>
+    <script>
+      (() => {
+        const showStartupError = (message) => {
+          if (window.__portfolioReady) return;
+          const root = document.getElementById('root');
+          if (!root) return;
+          const screen = document.createElement('main');
+          screen.setAttribute('role', 'alert');
+          screen.style.cssText = 'min-height:100vh;display:grid;align-content:center;gap:12px;max-width:680px;margin:auto;padding:32px;background:#000;color:#f0f0f0;font:16px/1.6 system-ui,sans-serif';
+          const title = document.createElement('h1');
+          title.style.cssText = 'margin:0;font-size:28px';
+          title.textContent = 'Le portfolio n’a pas pu démarrer';
+          const details = document.createElement('p');
+          details.textContent = message || 'Le navigateur n’a pas chargé les fichiers de l’application.';
+          const hint = document.createElement('p');
+          hint.textContent = 'Dans un terminal ouvert dans le dossier du projet, lancez « npm run dev », puis ouvrez l’adresse locale affichée par Vite.';
+          screen.append(title, details, hint);
+          root.replaceChildren(screen);
+        };
+        window.__portfolioShowStartupError = showStartupError;
+        window.addEventListener('error', (event) => {
+          if (event.target instanceof HTMLScriptElement) showStartupError('Un fichier JavaScript n’a pas pu être chargé. Vérifiez l’adresse du serveur et rechargez la page.');
+          else if (event instanceof ErrorEvent) showStartupError(event.message);
+        }, true);
+        window.addEventListener('unhandledrejection', (event) => showStartupError(event.reason?.message));
+        window.__portfolioStartupTimer = window.setTimeout(() => {
+          showStartupError('Le chargement a dépassé le délai prévu. Vérifiez que le serveur Vite est toujours actif.');
+        }, 8000);
+      })();
+    </script>
+  </body>
+</html>
