@@ -1,13 +1,18 @@
+import { lazy } from "react";
 import SectionHeading from "../components/SectionHeading";
 import { labs } from "../data/projects";
 import { profile } from "../data/profile";
-import WebThreads from "../components/animated/WebThreads/WebThreads";
+import DeferredScene from "../components/DeferredScene";
+
+const WebThreads = lazy(() => import("../components/animated/WebThreads/WebThreads"));
 
 export default function Lab() {
   return (
     <section id="lab" className="section section-tinted lab-section">
       <div style={{ width: "100%", height: "600px", position: "absolute" }}>
-        <WebThreads
+        <DeferredScene
+          component={WebThreads}
+          style={{ width: "100%", height: "100%" }}
           colors={["#5227FF", "#FF9FFC"]}
           coreColor="#FFFFFF"
           threadCount={6}

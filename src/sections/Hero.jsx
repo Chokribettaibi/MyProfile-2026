@@ -1,9 +1,10 @@
+import { lazy } from "react";
 import { profile } from "../data/profile";
-import portrait from "../assets/portrait-1.webp";
 import MagneticLink from "../components/MagneticLink";
 import TechText from "../components/TechText";
-import useSpotlightTilt from "../hooks/useSpotlightTilt";
-import Lanyard from "../components/Lanyard/Lanyard";
+import DeferredScene from "../components/DeferredScene";
+
+const Lanyard = lazy(() => import("../components/Lanyard/Lanyard"));
 
 const techTextSettings = {
   fontSize: 150,
@@ -30,7 +31,6 @@ const techTextSettings = {
 };
 
 export default function Hero() {
-  const cubeTilt = useSpotlightTilt(4);
   return (
     <section className="hero shell" aria-labelledby="hero-title">
       <div className="hero-copy">
@@ -84,11 +84,21 @@ export default function Hero() {
           <span>Approche pratique et progressive</span>
         </div>
       </div>
-      <div style={{ width: "100%", height: "600px" }}>
-        <Lanyard
+      <div className="hero-lanyard" style={{ width: "100%", height: "600px" }}>
+        <DeferredScene
+          component={Lanyard}
+          loadOnIdle
+          style={{ width: "100%", height: "100%" }}
+          fallback={
+            <img
+              className="lanyard-poster"
+              src={`${import.meta.env.BASE_URL}portrait-1.webp`}
+              fetchPriority="high"
+              alt=""
+            />
+          }
           frontImage={`${import.meta.env.BASE_URL}portrait-1.webp`}
           backImage={`${import.meta.env.BASE_URL}1760789324338.jpg`}
-          strapImage={`${import.meta.env.BASE_URL}band.png`}
           imageFit="cover"
           cardColor="#ffffff"
           orientation="portrait"

@@ -1,14 +1,17 @@
+import { lazy } from "react";
 import { profile } from "../data/profile";
-import CrystalizedBall from "./animated/Crystalized Ball/CrystalizedBall";
+import DeferredScene from "./DeferredScene";
 
-
+const CrystalizedBall = lazy(() => import("./animated/Crystalized Ball/CrystalizedBall"));
 
 export default function Footer() {
   return (
     <footer className="footer">
 
       <div style={{ width: "100%", height: "600px", position: "relative" }}>
-        <CrystalizedBall
+        <DeferredScene
+          component={CrystalizedBall}
+          style={{ width: "100%", height: "100%" }}
           preset="plasma"
           color="#F25BD0"
           size={0.7}

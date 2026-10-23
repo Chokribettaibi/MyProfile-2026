@@ -1,5 +1,7 @@
-import { useEffect, useState } from 'react'
-import DarkVeil from '../DarkVeil/DarkVeil'
+import { lazy, useEffect, useState } from 'react'
+import DeferredScene from '../../DeferredScene'
+
+const DarkVeil = lazy(() => import('../DarkVeil/DarkVeil'))
 
 const desktopSettings = {
   color: '#7565ff',
@@ -40,6 +42,11 @@ export default function AnimatedBackground() {
   }, [])
 
   return <div className="ambient-background" aria-hidden="true">
-    <DarkVeil {...(isCoarsePointer ? mobileSettings : desktopSettings)} />
+    <DeferredScene
+      component={DarkVeil}
+      loadOnIdle
+      style={{ position: 'absolute', inset: 0 }}
+      {...(isCoarsePointer ? mobileSettings : desktopSettings)}
+    />
   </div>
 }

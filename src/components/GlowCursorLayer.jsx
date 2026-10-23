@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react'
-import GlowCursor from './GlowCursor'
+import { lazy, Suspense, useEffect, useState } from 'react'
+
+const GlowCursor = lazy(() => import('./GlowCursor'))
 
 const finePointerQuery = '(pointer: fine)'
 const coarsePointerQuery = '(pointer: coarse)'
@@ -12,6 +13,7 @@ export default function GlowCursorLayer({ theme = 'dark' }) {
   const [enabled, setEnabled] = useState(() => typeof window !== 'undefined'
     && (window.matchMedia(finePointerQuery).matches || window.matchMedia(coarsePointerQuery).matches)
     && !window.matchMedia(reducedMotionQuery).matches)
+  const [hasInteracted, setHasInteracted] = useState(false)
 
   useEffect(() => {
     const finePointer = window.matchMedia(finePointerQuery)
@@ -21,48 +23,61 @@ export default function GlowCursorLayer({ theme = 'dark' }) {
       !reducedMotion.matches && (finePointer.matches || coarsePointer.matches || sawMousePointer),
     )
     let sawMousePointer = false
+    let hasRecordedInteraction = false
     setIsCoarsePointer(coarsePointer.matches)
-    const onPointerMove = event => {
-      if (event.pointerType !== 'mouse' || reducedMotion.matches || sawMousePointer) return
-      sawMousePointer = true
-      update()
+    const recordInteraction = () => {
+      if (hasRecordedInteraction) return
+      hasRecordedInteraction = true
+      setHasInteracted(true)
     }
+    const onPointerMove = event => {
+      recordInteraction()
+      if (event.pointerType === 'mouse' && !reducedMotion.matches && !sawMousePointer) {
+        sawMousePointer = true
+        update()
+      }
+    }
+    const onPointerDown = recordInteraction
     update()
     finePointer.addEventListener('change', update)
     coarsePointer.addEventListener('change', update)
     reducedMotion.addEventListener('change', update)
     window.addEventListener('pointermove', onPointerMove, { passive: true })
+    window.addEventListener('pointerdown', onPointerDown, { passive: true })
     return () => {
       finePointer.removeEventListener('change', update)
       coarsePointer.removeEventListener('change', update)
       reducedMotion.removeEventListener('change', update)
       window.removeEventListener('pointermove', onPointerMove)
+      window.removeEventListener('pointerdown', onPointerDown)
     }
   }, [])
 
-  if (!enabled) return null
+  if (!enabled || !hasInteracted) return null
 
-  return <GlowCursor
-    className="site-glow-cursor"
-    color={theme === 'light' ? '#6552ce' : '#baa7ff'}
-    secondaryColor={theme === 'light' ? '#9281f7' : '#7565ff'}
-    intensity={1.15}
-    trailWidth={3.4}
-    linger={1.35}
-    glow={1.1}
-    hotspot={0.7}
-    followSpeed={0.55}
-    clickBurst
-    quality={isCoarsePointer ? 'low' : 'medium'}
-    theme={theme}
-    maxDevicePixelRatio={isCoarsePointer ? 1 : 1.5}
-    {...(isCoarsePointer ? {
-      intensity: 0.95,
-      trailWidth: 3,
-      linger: 1.2,
-      glow: 1,
-      hotspot: 0.62,
-      followSpeed: 0.82,
-    } : {})}
-  />
+  return <Suspense fallback={null}>
+    <GlowCursor
+      className="site-glow-cursor"
+      color={theme === 'light' ? '#6552ce' : '#baa7ff'}
+      secondaryColor={theme === 'light' ? '#9281f7' : '#7565ff'}
+      intensity={1.15}
+      trailWidth={3.4}
+      linger={1.35}
+      glow={1.1}
+      hotspot={0.7}
+      followSpeed={0.55}
+      clickBurst
+      quality={isCoarsePointer ? 'low' : 'medium'}
+      theme={theme}
+      maxDevicePixelRatio={isCoarsePointer ? 1 : 1.5}
+      {...(isCoarsePointer ? {
+        intensity: 0.95,
+        trailWidth: 3,
+        linger: 1.2,
+        glow: 1,
+        hotspot: 0.62,
+        followSpeed: 0.82,
+      } : {})}
+    />
+  </Suspense>
 }
