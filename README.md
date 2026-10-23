@@ -30,3 +30,4 @@ The static production files are written to `dist/`.
 
 The portfolio content is in French, matching the existing public site. Course and lab references that were hosted on the original domain remain links to those production resources; the portfolio itself is local and does not replace the current production website.
 # MyProfile-2026
+# MyProfile-2026
