@@ -1,4 +1,4 @@
-import{n as e,r as t,t as n}from"./index-CyrYc-_j.js";var r=t(e(),1),i=n(),a=`#version 300 es
+import{n as e,r as t,t as n}from"./index-CxSCoCH_.js";var r=t(e(),1),i=n(),a=`#version 300 es
 in vec2 aPosition;
 void main() {
   gl_Position = vec4(aPosition, 0.0, 1.0);
