@@ -1,4 +1,4 @@
-import{n as e,r as t,t as n}from"./index-CxSCoCH_.js";var r=t(e(),1),i=n(),a=4,o=2.4,s=2.2,c=1.25,l=`https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js`,u=`https://cdn.jsdelivr.net/gh/justadudewhohacks/face-api.js@0.22.2/weights`,d={solid:0,dashed:1,dotted:2},f=`#version 300 es
+import{n as e,r as t,t as n}from"./index-DfQUL1Fd.js";var r=t(e(),1),i=n(),a=4,o=2.4,s=2.2,c=1.25,l=`https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js`,u=`https://cdn.jsdelivr.net/gh/justadudewhohacks/face-api.js@0.22.2/weights`,d={solid:0,dashed:1,dotted:2},f=`#version 300 es
 out vec2 vUv;
 void main() {
   vec2 p = vec2(float((gl_VertexID << 1) & 2), float(gl_VertexID & 2));

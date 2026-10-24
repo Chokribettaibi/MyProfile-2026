@@ -1,4 +1,4 @@
-import{n as e,r as t,t as n}from"./index-CxSCoCH_.js";var r=t(e(),1),i=n(),a=`web-threads-container`,o=`web-threads-canvas`,s=24,c=6,l=3,u=1.6,d=.05,f=1.25,p=Math.PI*2,m=`#version 300 es
+import{n as e,r as t,t as n}from"./index-DfQUL1Fd.js";var r=t(e(),1),i=n(),a=`web-threads-container`,o=`web-threads-canvas`,s=24,c=6,l=3,u=1.6,d=.05,f=1.25,p=Math.PI*2,m=`#version 300 es
 in vec2 aPosition;
 void main() {
   gl_Position = vec4(aPosition, 0.0, 1.0);
