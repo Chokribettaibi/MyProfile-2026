@@ -1,5 +1,5 @@
 import { lazy, useEffect, useState } from 'react'
-import DeferredScene from '../../DeferredScene'
+import DeferredScene from '../DeferredScene/DeferredScene'
 
 const DarkVeil = lazy(() => import('../DarkVeil/DarkVeil'))
 

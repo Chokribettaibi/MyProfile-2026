@@ -1,14 +1,11 @@
 import { useEffect, useState } from 'react'
-import Navbar from './components/Navbar'
-import Hero from './sections/Hero'
-import About from './sections/About'
-import Courses from './sections/Courses'
-import Projects from './sections/Projects'
-import Lab from './sections/Lab'
-import Contact from './sections/Contact'
-import Footer from './components/Footer'
-import AnimatedBackground from './components/animated/animatedBackground/AnimatedBackground'
-import GlowCursorLayer from './components/GlowCursorLayer'
+import { About, Courses, Projects, Lab, Contact, Hero, Footer } from './sections'
+import { Navbar, AnimatedBackground } from './components'
+
+// import { Route, Routes, BrowserRouter } from 'react-router-dom'
+// import Navbar from './components/Navbar'
+// import AnimatedBackground from './components/animated/animatedBackground/AnimatedBackground'
+// import GlowCursorLayer from './components/animated/GlowCursor/GlowCursorLayer'
 import { profile } from './data/profile'
 
 function getInitialTheme() {
@@ -51,7 +48,7 @@ export default function App() {
   return <>
     <AnimatedBackground />
 
-    <GlowCursorLayer theme={theme} />
+    {/* <GlowCursorLayer theme={theme} /> */}
 
     <div className="site-content">
       <a className="skip-link" href="#main">Aller au contenu</a>
@@ -60,5 +57,6 @@ export default function App() {
       <Footer />
       <a className="floating-mail" href={`mailto:${profile.email}`} aria-label="Envoyer un e-mail">✉</a>
     </div>
+
   </>
 }

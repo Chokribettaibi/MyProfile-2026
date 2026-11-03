@@ -1,10 +1,11 @@
 import { lazy } from "react";
-import { profile } from "../data/profile";
-import MagneticLink from "../components/MagneticLink";
-import TechText from "../components/TechText";
-import DeferredScene from "../components/DeferredScene";
-
-const Lanyard = lazy(() => import("../components/Lanyard/Lanyard"));
+import { profile } from "../../data/profile";
+import {TechText, MagneticLink, DeferredScene} from "../../components";
+// import MagneticLink from "../../components/MagneticLink/MagneticLink";
+// import TechText from "../../components/animated/TechText/TechText";
+// import DeferredScene from "../../components/DeferredScene";
+const WebThreads = lazy(() => import("../../components/animated/WebThreads/WebThreads"));
+const Lanyard = lazy(() => import("../../components/animated/Lanyard/Lanyard"));
 
 const techTextSettings = {
   fontSize: 150,
@@ -33,6 +34,16 @@ const techTextSettings = {
 export default function Hero() {
   return (
     <section className="hero shell" aria-labelledby="hero-title">
+      <div style={{ width: "100%", height: "600px", position: "absolute" }}>
+        <DeferredScene
+          component={WebThreads}
+          style={{ width: "100%", height: "100%" }}
+          colors={["#5227FF", "#FF9FFC"]}
+          coreColor="#FFFFFF"
+          threadCount={6}
+          spread={0.18}
+        />
+      </div>
       <div className="hero-copy">
         <p className="eyebrow hero-eyebrow">
           <span className="status-dot"></span>

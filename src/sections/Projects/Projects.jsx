@@ -1,6 +1,6 @@
-import SectionHeading from "../components/SectionHeading";
-import ProjectCard from "../components/ProjectCard";
-import { projects } from "../data/projects";
+import SectionHeading from "../../components/SectionHeading/SectionHeading";
+import ProjectCard from "../../components/ProjectCard/ProjectCard";
+import { projects } from "../../data/projects";
 
 export default function Projects() {
   return (

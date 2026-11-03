@@ -1,12 +1,14 @@
 import { lazy } from "react";
-import SectionHeading from "../components/SectionHeading";
-import { labs } from "../data/projects";
-import { profile } from "../data/profile";
-import DeferredScene from "../components/DeferredScene";
-
-const WebThreads = lazy(() => import("../components/animated/WebThreads/WebThreads"));
+import SectionHeading from "../../components/SectionHeading/SectionHeading";
+import { labs } from "../../data/projects";
+import { profile } from "../../data/profile";
+import DeferredScene from "../../components/animated/DeferredScene/DeferredScene";
+import { useState } from "react";
+import Carousel from "../../components/Carousel/Carousel";
+const WebThreads = lazy(() => import("../../components/animated/WebThreads/WebThreads"));
 
 export default function Lab() {
+  const [showCarousel, setShowCarousel] = useState(false);
   return (
     <section id="lab" className="section section-tinted lab-section">
       <div style={{ width: "100%", height: "600px", position: "absolute" }}>
@@ -26,6 +28,7 @@ export default function Lab() {
           description="Une sélection de ressources visuelles et de démonstrations créatives du site."
         />
         <div className="lab-grid">
+
           {labs.map((lab, i) => (
             <article
               className="lab-card reveal"
@@ -33,7 +36,7 @@ export default function Lab() {
               key={lab.title}
             >
               <div className="lab-card-title">
-                <spa>0{i + 1}</spa>
+                <span>0{i + 1}</span>
                 <h3>{lab.title}</h3>
               </div>
               <div className="resource-links">

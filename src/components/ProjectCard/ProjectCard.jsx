@@ -1,4 +1,4 @@
-import useSpotlightTilt from "../hooks/useSpotlightTilt";
+import useSpotlightTilt from "../../hooks/useSpotlightTilt";
 
 export default function ProjectCard({ project, index }) {
   const tilt = useSpotlightTilt(1.6);

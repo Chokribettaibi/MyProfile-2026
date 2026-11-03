@@ -1198,10 +1198,35 @@ p {
   color: var(--accent-strong);
 }
 .footer {
-  padding: 23px 0 30px;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 0 0 30px;
   color: var(--quiet);
 }
+.footer-visual {
+  position: relative;
+  height: 300px;
+  margin-bottom: 18px;
+  overflow: hidden;
+}
+.footer-gridscan {
+  position: absolute;
+  z-index: 2;
+  inset: 105px 0 0;
+  opacity: 1;
+  pointer-events: none;
+}
+.footer-crystal {
+  position: absolute !important;
+  z-index: 1;
+  inset: -35px 0 auto;
+  height: 300px !important;
+  pointer-events: none;
+}
 .footer-inner {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: 1fr 1.2fr auto auto;
   align-items: center;

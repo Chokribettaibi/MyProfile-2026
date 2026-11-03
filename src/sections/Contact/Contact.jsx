@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { profile } from '../data/profile'
+import { profile } from '../../data/profile'
 
 export default function Contact() {
   const [copied, setCopied] = useState(false)

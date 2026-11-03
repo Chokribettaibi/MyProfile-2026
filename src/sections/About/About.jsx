@@ -1,9 +1,18 @@
-import SectionHeading from '../components/SectionHeading'
-import SkillCard from '../components/SkillCard'
-import { skillGroups } from '../data/profile'
+import {SectionHeading, SkillCard } from '../../components'
+import { skillGroups } from '../../data/profile'
+import WebThreads from '../../components/animated/WebThreads/WebThreads'
+import ThreeDeeScene from '../../components/animated/WebThreads/WebThreads'
 
 export default function About() {
   return <section id="about" className="section shell">
+    <ThreeDeeScene
+      component={WebThreads}
+      style={{ width: "100%", height: "100%" }}
+      colors={["#5227FF", "#FF9FFC"]}
+      coreColor="#FFFFFF"
+      threadCount={6}
+      spread={0.18}
+    />
     <div className="about-grid">
       <SectionHeading eyebrow="À propos" title="Comprendre les idées. Construire avec méthode." />
       <div className="about-copy">
